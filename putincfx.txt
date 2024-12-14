@@ -1,5 +1,3 @@
-
-
-# chat #
-ensure chat-clear
-add_ace group.admin chat.clear allow # allow chat commands
+# ACE PERMISSIONS
+ensure clear-chat
+add_ace group.admin luke.clearchat allow # Allow the /cc command to server administrators.
