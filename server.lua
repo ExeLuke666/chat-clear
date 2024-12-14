@@ -1,15 +1,16 @@
-RegisterCommand("clearchat", function(source, args) 
-    if IsPlayerAceAllowed(source, "chat.clear") then
+RegisterCommand("cc", function(source, args)
+    if IsPlayerAceAllowed(source, "luke.clearchat") then
         TriggerClientEvent("chat:clear", -1)
         Citizen.Wait(10)
-        TriggerClientEvent('chatMessage', -1, "[^3SYSTEM^0] Chat has been cleared by an admin")
-        Print("Chat has been cleared by ID: " .. source .. " Name: " .. GetPlayerName(source))
-    else 
-        TriggerClientEvent('chatMessage', -1, "[^3SYSTEM^0] Access Denied")
-        print("A user with the ID tried to run the clearchat script without having proper perms ID: " .. source .. " Name: " .. GetPlayerName(source))
-    end
+
+        local adminName = GetPlayerName(source)
+        TriggerClientEvent("chatMessage", -1, "[^3SYSTEM^0] Chat has been cleared by admin: " .. adminName)
+        print("[CLEARCHAT]: Chat cleared by ID: " .. source .. " Name: " .. adminName)
+    else
+        local playerName = GetPlayerName(source)
+        TriggerClientEvent("chatMessage", source, "[^3SYSTEM^0] Access Denied: You do not have permission to clear the chat.")
+        print("[CLEARCHAT]: Unauthorized attempt to clear chat. ID: " .. source .. " Name: " .. playerName)
+        end
 end, false)
 
-
-
-print("Made by NAT2K15. For support visit our discord @ https://discord.gg/RquDVTfDwu")
+print("[CLEARCHAT]: Developed by Luke Development. For support, visit https://lukedevelopment.xyz")
